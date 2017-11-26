@@ -5,6 +5,9 @@
  * Shattered Pixel Dungeon
  * Copyright (C) 2014-2017 Evan Debenham
  *
+ * Ghostapo Dungeon
+ * Copyright (C) 2017 Kevin Degeling
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,6 +24,7 @@
 
 package com.ghostapodungeon.actors.mobs;
 
+import com.ghostapodungeon.actors.mobs.enemies.WehrmachtConscript;
 import com.watabou.utils.Random;
 
 import java.util.ArrayList;
@@ -43,9 +47,13 @@ public class Bestiary {
 			// Sewers
 			case 1: default:
 				//10x rat
+//				return new ArrayList<Class<? extends Mob>>(Arrays.asList(
+//						Rat.class, Rat.class, Rat.class, Rat.class, Rat.class,
+//						Rat.class, Rat.class, Rat.class, Rat.class, Rat.class));
+
 				return new ArrayList<Class<? extends Mob>>(Arrays.asList(
-						Rat.class, Rat.class, Rat.class, Rat.class, Rat.class,
-						Rat.class, Rat.class, Rat.class, Rat.class, Rat.class));
+						WehrmachtConscript.class, WehrmachtConscript.class, WehrmachtConscript.class, WehrmachtConscript.class, WehrmachtConscript.class,
+						WehrmachtConscript.class, WehrmachtConscript.class, WehrmachtConscript.class, WehrmachtConscript.class, WehrmachtConscript.class));
 			case 2:
 				//3x rat, 3x gnoll
 				return new ArrayList<>(Arrays.asList(Rat.class, Rat.class, Rat.class,
