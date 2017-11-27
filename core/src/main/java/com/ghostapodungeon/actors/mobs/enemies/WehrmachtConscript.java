@@ -27,13 +27,13 @@ package com.ghostapodungeon.actors.mobs.enemies;
 import com.ghostapodungeon.actors.Char;
 import com.ghostapodungeon.actors.mobs.Mob;
 import com.ghostapodungeon.mechanics.Ballistica;
-import com.ghostapodungeon.sprites.ShopkeeperSprite;
+import com.ghostapodungeon.sprites.WehrmachtConscriptSprite;
 import com.watabou.utils.Random;
 
 public class WehrmachtConscript extends Mob {
 
     {
-        spriteClass = ShopkeeperSprite.class;
+        spriteClass = WehrmachtConscriptSprite.class;
 
         HP = HT = 8;
         defenseSkill = 2;

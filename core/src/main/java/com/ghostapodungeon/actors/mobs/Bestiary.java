@@ -46,11 +46,7 @@ public class Bestiary {
 			
 			// Sewers
 			case 1: default:
-				//10x rat
-//				return new ArrayList<Class<? extends Mob>>(Arrays.asList(
-//						Rat.class, Rat.class, Rat.class, Rat.class, Rat.class,
-//						Rat.class, Rat.class, Rat.class, Rat.class, Rat.class));
-
+				//10x conscript
 				return new ArrayList<Class<? extends Mob>>(Arrays.asList(
 						WehrmachtConscript.class, WehrmachtConscript.class, WehrmachtConscript.class, WehrmachtConscript.class, WehrmachtConscript.class,
 						WehrmachtConscript.class, WehrmachtConscript.class, WehrmachtConscript.class, WehrmachtConscript.class, WehrmachtConscript.class));

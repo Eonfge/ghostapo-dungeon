@@ -5,6 +5,9 @@
  * Shattered Pixel Dungeon
  * Copyright (C) 2014-2017 Evan Debenham
  *
+ * Ghostapo Dungeon
+ * Copyright (C) 2017 Kevin Degeling
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -43,7 +46,7 @@ public class MobSprite extends CharSprite {
 	public void onComplete( Animation anim ) {
 		
 		super.onComplete( anim );
-		
+	/*
 		if (anim == die) {
 			parent.add( new AlphaTweener( this, 0, FADE_TIME ) {
 				@Override
@@ -53,6 +56,7 @@ public class MobSprite extends CharSprite {
 				};
 			} );
 		}
+	*/
 	}
 	
 	public void fall() {

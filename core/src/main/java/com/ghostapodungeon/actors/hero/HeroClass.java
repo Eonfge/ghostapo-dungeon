@@ -25,6 +25,7 @@ import com.ghostapodungeon.Assets;
 import com.ghostapodungeon.Badges;
 import com.ghostapodungeon.Challenges;
 import com.ghostapodungeon.Dungeon;
+import com.ghostapodungeon.items.HandGrenade;
 import com.ghostapodungeon.items.armor.ClothArmor;
 import com.ghostapodungeon.items.potions.PotionOfMindVision;
 import com.ghostapodungeon.items.weapon.melee.WornShortsword;
@@ -106,12 +107,19 @@ public enum HeroClass {
 
 	private static void initWarrior( Hero hero ) {
 		(hero.belongings.weapon = new WornShortsword()).identify();
-		Dart darts = new Dart( 8 );
-		darts.identify().collect();
 
+		Dart darts = new Dart( 80 );
+		darts.identify().collect();
+		Dungeon.quickslot.setSlot(0, darts);
+
+		HandGrenade grenades = new HandGrenade();
+		grenades.quantity(5).collect();
+		Dungeon.quickslot.setSlot(1, grenades);
+/*
 		if ( Badges.isUnlocked(Badges.Badge.TUTORIAL_WARRIOR) ){
-			if (!Dungeon.isChallenged(Challenges.NO_ARMOR))
+			if (!Dungeon.isChallenged(Challenges.NO_ARMOR)) {
 				hero.belongings.armor.affixSeal(new BrokenSeal());
+			}
 			Dungeon.quickslot.setSlot(0, darts);
 		} else {
 			if (!Dungeon.isChallenged(Challenges.NO_ARMOR)) {
@@ -121,7 +129,7 @@ public enum HeroClass {
 			}
 			Dungeon.quickslot.setSlot(1, darts);
 		}
-
+*/
 		new PotionOfHealing().identify();
 	}
 
