@@ -26,6 +26,10 @@ package com.ghostapodungeon.actors.mobs.enemies;
 
 import com.ghostapodungeon.actors.Char;
 import com.ghostapodungeon.actors.mobs.Mob;
+import com.ghostapodungeon.items.HandGrenade;
+import com.ghostapodungeon.items.Item;
+import com.ghostapodungeon.items.weapon.missiles.Dart;
+import com.ghostapodungeon.items.weapon.munition.Parabellum;
 import com.ghostapodungeon.mechanics.Ballistica;
 import com.ghostapodungeon.sprites.WehrmachtConscriptSprite;
 import com.watabou.utils.Random;
@@ -39,6 +43,8 @@ public class WehrmachtConscript extends Mob {
         defenseSkill = 2;
 
         maxLvl = 5;
+
+        lootChance = 1f;
     }
 
     @Override
@@ -60,5 +66,13 @@ public class WehrmachtConscript extends Mob {
     protected boolean canAttack( Char enemy ) {
         Ballistica attack = new Ballistica( pos, enemy.pos, Ballistica.PROJECTILE);
         return attack.collisionPos == enemy.pos;
+    }
+
+    @Override
+    protected Item createLoot() {
+        if(Random.Int(1, 10) < 3){
+            return new HandGrenade();
+        }
+        return new Parabellum().quantity( Random.Int(2, 6) );
     }
 }

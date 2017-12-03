@@ -46,7 +46,7 @@ public class MobSprite extends CharSprite {
 	public void onComplete( Animation anim ) {
 		
 		super.onComplete( anim );
-	/*
+
 		if (anim == die) {
 			parent.add( new AlphaTweener( this, 0, FADE_TIME ) {
 				@Override
@@ -56,7 +56,6 @@ public class MobSprite extends CharSprite {
 				};
 			} );
 		}
-	*/
 	}
 	
 	public void fall() {

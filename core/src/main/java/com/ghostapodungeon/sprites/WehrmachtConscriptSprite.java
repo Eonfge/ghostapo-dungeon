@@ -25,6 +25,7 @@
 package com.ghostapodungeon.sprites;
 
 import com.ghostapodungeon.Assets;
+import com.watabou.noosa.MovieClip;
 import com.watabou.noosa.TextureFilm;
 
 public class WehrmachtConscriptSprite extends MobSprite {
@@ -49,6 +50,25 @@ public class WehrmachtConscriptSprite extends MobSprite {
         die.frames( frames, 11, 12, 13, 14 );
 
         play( idle );
+    }
+
+    @Override
+    public void onComplete( MovieClip.Animation anim ) {
+
+        // Spawn a corpse sprite
+        if (anim == die) {
+            return;
+  /*          parent.add( new AlphaTweener( this, 0, FADE_TIME ) {
+                @Override
+                protected void onComplete() {
+                    MobSprite.this.killAndErase();
+                    parent.erase( this );
+                };
+            } ); */
+        }
+
+        super.onComplete( anim );
+
     }
 
     @Override

@@ -5,6 +5,9 @@
  * Shattered Pixel Dungeon
  * Copyright (C) 2014-2017 Evan Debenham
  *
+ * Ghostapo Dungeon
+ * Copyright (C) 2017 Kevin Degeling
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -128,27 +131,6 @@ public class Dungeon {
 				}
 			}
 		}
-
-		//for saves prior to 0.6.1
-		public static void legacyRestore( int[] counts ){
-			STRENGTH_POTIONS.count =    counts[0];
-			UPGRADE_SCROLLS.count =     counts[1];
-			ARCANE_STYLI.count =        counts[2];
-			SWARM_HP.count =            counts[3];
-			BAT_HP.count =              counts[4];
-			WARLOCK_HP.count =          counts[5];
-			SCORPIO_HP.count =          counts[6];
-			COOKING_HP.count =          counts[7];
-			BLANDFRUIT_SEED.count =     counts[8];
-			THIEVES_ARMBAND.count =     counts[9];
-			DEW_VIAL.count =            counts[10];
-			SEED_POUCH.count =          counts[11];
-			SCROLL_HOLDER.count =       counts[12];
-			POTION_BANDOLIER.count =    counts[13];
-			WAND_HOLSTER.count =        counts[14];
-			GUARD_HP.count =            counts[15];
-		}
-
 	}
 
 	public static int challenges;
@@ -597,12 +579,7 @@ public class Dungeon {
 		
 		if (fullLoad) {
 
-			//pre-0.6.1
-			if( bundle.contains("limiteddrops") ){
-				LimitedDrops.legacyRestore( bundle.getIntArray("limiteddrops") );
-			} else {
-				LimitedDrops.restore( bundle.getBundle(LIMDROPS) );
-			}
+			LimitedDrops.restore( bundle.getBundle(LIMDROPS) );
 
 			chapters = new HashSet<Integer>();
 			int ids[] = bundle.getIntArray( CHAPTERS );

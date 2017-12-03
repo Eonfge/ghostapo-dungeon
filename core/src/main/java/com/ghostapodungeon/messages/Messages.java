@@ -5,6 +5,9 @@
  * Shattered Pixel Dungeon
  * Copyright (C) 2014-2017 Evan Debenham
  *
+ * Ghostapo  Dungeon
+ * Copyright (C) 2017 Kevin Degeling
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -111,8 +114,8 @@ public class Messages {
 		return get(null, key, args);
 	}
 
-	public static String get(Object o, String k, Object...args){
-		return get(o.getClass(), k, args);
+	public static String get(Object object, String key, Object...args){
+		return get(object.getClass(), key, args);
 	}
 
 	public static String get(Class c, String k, Object...args){

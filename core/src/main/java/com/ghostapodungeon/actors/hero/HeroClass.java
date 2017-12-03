@@ -5,6 +5,9 @@
  * Shattered Pixel Dungeon
  * Copyright (C) 2014-2017 Evan Debenham
  *
+ * Ghostapo  Dungeon
+ * Copyright (C) 2017 Kevin Degeling
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -29,7 +32,6 @@ import com.ghostapodungeon.items.HandGrenade;
 import com.ghostapodungeon.items.armor.ClothArmor;
 import com.ghostapodungeon.items.potions.PotionOfMindVision;
 import com.ghostapodungeon.items.weapon.melee.WornShortsword;
-import com.ghostapodungeon.items.BrokenSeal;
 import com.ghostapodungeon.items.artifacts.CloakOfShadows;
 import com.ghostapodungeon.items.food.Food;
 import com.ghostapodungeon.items.potions.PotionOfHealing;
@@ -41,6 +43,8 @@ import com.ghostapodungeon.items.weapon.melee.Knuckles;
 import com.ghostapodungeon.items.weapon.melee.MagesStaff;
 import com.ghostapodungeon.items.weapon.missiles.Boomerang;
 import com.ghostapodungeon.items.weapon.missiles.Dart;
+import com.ghostapodungeon.items.weapon.munition.Parabellum;
+import com.ghostapodungeon.items.weapon.projectiles.Luger;
 import com.ghostapodungeon.messages.Messages;
 import com.watabou.utils.Bundle;
 
@@ -106,30 +110,17 @@ public enum HeroClass {
 	}
 
 	private static void initWarrior( Hero hero ) {
-		(hero.belongings.weapon = new WornShortsword()).identify();
-
-		Dart darts = new Dart( 80 );
-		darts.identify().collect();
-		Dungeon.quickslot.setSlot(0, darts);
+		Luger luger = new Luger();
+		hero.belongings.weapon = luger;
+		Dungeon.quickslot.setSlot(0, luger);
 
 		HandGrenade grenades = new HandGrenade();
 		grenades.quantity(5).collect();
 		Dungeon.quickslot.setSlot(1, grenades);
-/*
-		if ( Badges.isUnlocked(Badges.Badge.TUTORIAL_WARRIOR) ){
-			if (!Dungeon.isChallenged(Challenges.NO_ARMOR)) {
-				hero.belongings.armor.affixSeal(new BrokenSeal());
-			}
-			Dungeon.quickslot.setSlot(0, darts);
-		} else {
-			if (!Dungeon.isChallenged(Challenges.NO_ARMOR)) {
-				BrokenSeal seal = new BrokenSeal();
-				seal.collect();
-				Dungeon.quickslot.setSlot(0, seal);
-			}
-			Dungeon.quickslot.setSlot(1, darts);
-		}
-*/
+
+		Parabellum bullets = new Parabellum();
+		bullets.quantity(12).collect();
+
 		new PotionOfHealing().identify();
 	}
 
