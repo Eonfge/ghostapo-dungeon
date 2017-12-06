@@ -24,6 +24,8 @@
 
 package com.ghostapodungeon.items.weapon.projectiles;
 
+import android.util.Log;
+
 import com.ghostapodungeon.Assets;
 import com.ghostapodungeon.actors.Actor;
 import com.ghostapodungeon.actors.Char;
@@ -35,13 +37,13 @@ import com.ghostapodungeon.mechanics.Ballistica;
 import com.ghostapodungeon.sprites.ItemSpriteSheet;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.Callback;
+import com.watabou.utils.Random;
 
 
 public class Luger extends ProjectileWeapon {
 
     {
-        image = ItemSpriteSheet.KNUCKLEDUSTER;
-
+        image = ItemSpriteSheet.LUGER;
         tier = 1;
 
         munitionType = Parabellum.class;
@@ -52,19 +54,19 @@ public class Luger extends ProjectileWeapon {
 
     @Override
     public void onHit(ProjectileWeapon weapon, Char attacker, Char defender, int damage){
-
-
-        return;
-    }
-
-    @Override
-    public void onFire( Ballistica attack ){
+        Log.d("MISC", "onHit: execute!");
 
         return;
     }
 
     @Override
-    public void fired(){
+    public void onImpact( Ballistica bullet ){
+        int cell = bullet.collisionPos;
+        Char ch = Actor.findChar( cell );
+
+        if(ch != null){ //TODO: CUSTOM PROJECTILE DMAGE
+            ch.damage( Random.Int( min(), max() ), this);
+        }
 
         for (Item item : curUser.belongings.backpack.items){
             if (item instanceof Parabellum) {
@@ -104,14 +106,6 @@ public class Luger extends ProjectileWeapon {
     }
 
     protected void fx(Ballistica bolt, Callback callback ) {
-
-        int cell = bolt.collisionPos;
-        Char ch = Actor.findChar( cell );
-
-        if(ch != null){ //TODO: UITLEESBAAR
-            ch.damage( 20, this);
-        }
-
         MagicMissile.boltFromChar( curUser.sprite.parent,
                 MagicMissile.FORCE,
                 curUser.sprite,

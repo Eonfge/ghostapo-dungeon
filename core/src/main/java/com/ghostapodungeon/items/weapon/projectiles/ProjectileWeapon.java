@@ -63,11 +63,9 @@ public abstract class ProjectileWeapon extends Weapon {
         return actions;
     }
 
-    protected abstract void onFire( Ballistica attack );
+    protected abstract void onImpact( Ballistica attack );
 
     protected abstract Boolean hasMunition(Bag container);
-
-    protected abstract void fired();
 
     protected void fx( Ballistica bolt, Callback callback ) {
         MagicMissile.boltFromChar( curUser.sprite.parent,
@@ -143,8 +141,7 @@ public abstract class ProjectileWeapon extends Weapon {
 
                     currentWeapon.fx(shot, new Callback() {
                             public void call() {
-                                currentWeapon.onFire(shot);
-                                currentWeapon.fired();
+                                currentWeapon.onImpact(shot);
                             }
                         });
 

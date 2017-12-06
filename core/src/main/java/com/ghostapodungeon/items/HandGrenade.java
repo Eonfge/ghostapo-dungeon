@@ -48,7 +48,7 @@ import java.util.ArrayList;
 public class HandGrenade extends Item {
 	
 	{
-		image = ItemSpriteSheet.BOMB;
+		image = ItemSpriteSheet.STICKGRENEDE;
 
 		defaultAction = AC_LIGHTTHROW;
 		usesTargeting = true;

@@ -179,6 +179,7 @@ public class ItemSprite extends MovieClip {
 		}
 	}
 
+	//TODO: No spritesheet hardcoding in the sprite renderer
 	public ItemSprite view(Item item){
 		view(item.image(), item.glowing());
 		Emitter emitter = item.emitter();
@@ -189,7 +190,8 @@ public class ItemSprite extends MovieClip {
 		}
 		return this;
 	}
-	
+
+	//TODO: No spritesheet hardcoding in the sprite renderer
 	public ItemSprite view( int image, Glowing glowing ) {
 		if (this.emitter != null) this.emitter.killAndErase();
 		emitter = null;
@@ -198,6 +200,7 @@ public class ItemSprite extends MovieClip {
 		return this;
 	}
 
+	//TODO: No spritesheet hardcoding in the sprite renderer
 	public void frame( int image ){
 		frame( ItemSpriteSheet.film.get( image ));
 

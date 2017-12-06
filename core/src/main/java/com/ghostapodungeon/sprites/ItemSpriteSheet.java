@@ -5,6 +5,9 @@
  * Shattered Pixel Dungeon
  * Copyright (C) 2014-2017 Evan Debenham
  *
+ * Ghostapo  Dungeon
+ * Copyright (C) 2017 Kevin Degeling
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -130,6 +133,15 @@ public class ItemSpriteSheet {
 		assignItemRect(AMULET,          16, 16);
 	}
 
+	//TODO: No spritesheet hardcoding in the sprite renderer
+	private static final int WEAPONS   =                               xy(1, 5);   //16 slots
+	//null warning occupies space 0, should only show up if there's a bug.
+	public static final int LUGER       	 = WEAPONS+0;
+	public static final int STICKGRENEDE     = WEAPONS+1;
+	static{
+		assignItemRect(LUGER, 16, 16);
+		assignItemRect(STICKGRENEDE, 16, 16);
+	}
 	                                                                                    //32 free slots
 
 	private static final int WEP_TIER1      =                               xy(1, 7);   //8 slots
