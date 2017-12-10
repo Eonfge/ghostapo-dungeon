@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	package="com.ghostapodungeon"
 	android:versionCode="229"
-	android:versionName="0.6.2e"
+	android:versionName="0.1"
 	android:installLocation="auto">
 
 	<uses-permission android:name="android.permission.VIBRATE"/>

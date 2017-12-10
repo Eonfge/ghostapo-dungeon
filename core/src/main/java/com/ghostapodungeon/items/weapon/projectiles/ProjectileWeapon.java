@@ -24,7 +24,6 @@
 
 package com.ghostapodungeon.items.weapon.projectiles;
 
-import android.util.Log;
 
 import com.ghostapodungeon.Assets;
 import com.ghostapodungeon.actors.Actor;
