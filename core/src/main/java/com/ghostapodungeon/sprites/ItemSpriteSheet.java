@@ -142,7 +142,14 @@ public class ItemSpriteSheet {
 		assignItemRect(LUGER, 16, 16);
 		assignItemRect(STICKGRENEDE, 16, 16);
 	}
-	                                                                                    //32 free slots
+
+	//TODO: No spritesheet hardcoding in the sprite renderer
+	private static final int MUNITIONS   =                               xy(1, 6);   //16 slots
+	//null warning occupies space 0, should only show up if there's a bug.
+	public static final int PARABELLUM       	 = MUNITIONS+0;
+	static{
+		assignItemRect(PARABELLUM, 16, 16);
+	}	                                                                                    //32 free slots
 
 	private static final int WEP_TIER1      =                               xy(1, 7);   //8 slots
 	public static final int WORN_SHORTSWORD = WEP_TIER1+0;

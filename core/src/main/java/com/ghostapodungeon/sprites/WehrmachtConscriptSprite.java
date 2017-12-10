@@ -25,10 +25,17 @@
 package com.ghostapodungeon.sprites;
 
 import com.ghostapodungeon.Assets;
+import com.ghostapodungeon.Dungeon;
+import com.ghostapodungeon.actors.Actor;
+import com.ghostapodungeon.actors.Char;
+import com.ghostapodungeon.items.weapon.missiles.Shuriken;
 import com.watabou.noosa.MovieClip;
 import com.watabou.noosa.TextureFilm;
+import com.watabou.utils.Callback;
 
 public class WehrmachtConscriptSprite extends MobSprite {
+
+    private Animation fire;
 
     public WehrmachtConscriptSprite() {
         super();
@@ -69,6 +76,31 @@ public class WehrmachtConscriptSprite extends MobSprite {
 
         super.onComplete( anim );
 
+    }
+
+    @Override
+    public void attack( int cell ) {
+        if (!Dungeon.level.adjacent( cell, ch.pos )) {
+
+            final Char enemy = Actor.findChar(cell);
+
+            ((MissileSprite)parent.recycle( MissileSprite.class )).
+                    reset( ch.pos, cell, new Shuriken(), new Callback() {
+                        @Override
+                        public void call() {
+                            ch.next();
+                            if (enemy != null) ch.attack(enemy);
+                        }
+                    } );
+
+            play( fire );
+            turnTo( ch.pos , cell );
+
+        } else {
+
+            super.attack( cell );
+
+        }
     }
 
     @Override

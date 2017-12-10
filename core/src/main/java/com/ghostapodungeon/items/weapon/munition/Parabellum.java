@@ -30,7 +30,7 @@ import com.ghostapodungeon.sprites.ItemSpriteSheet;
 public class Parabellum extends Item {
 
     {
-        image = ItemSpriteSheet.STYLUS;
+        image = ItemSpriteSheet.PARABELLUM;
         stackable = true;
     }
 

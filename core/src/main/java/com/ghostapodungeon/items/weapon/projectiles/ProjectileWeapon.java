@@ -28,7 +28,6 @@ import android.util.Log;
 
 import com.ghostapodungeon.Assets;
 import com.ghostapodungeon.actors.Actor;
-import com.ghostapodungeon.actors.Char;
 import com.ghostapodungeon.actors.hero.Hero;
 import com.ghostapodungeon.effects.MagicMissile;
 import com.ghostapodungeon.items.bags.Bag;
@@ -67,16 +66,20 @@ public abstract class ProjectileWeapon extends Weapon {
 
     protected abstract Boolean hasMunition(Bag container);
 
-    protected void fx( Ballistica bolt, Callback callback ) {
+    protected void fx( Ballistica projectile, Callback callback ) {
+
         MagicMissile.boltFromChar( curUser.sprite.parent,
-                MagicMissile.MAGIC_MISSILE,
+                MagicMissile.RAINBOW,
                 curUser.sprite,
-                bolt.collisionPos,
+                projectile.collisionPos,
                 callback);
         Sample.INSTANCE.play( Assets.SND_ZAP );
+/*(
+        int cell = projectile.path.get(Math.min(projectile.dist, maxDistance()));
+        curUser.sprite.parent.add(new Beam.Bullet(curUser.sprite.center(), DungeonTilemap.raisedTileCenterToWorld( cell )));
+        callback.call();
+*/
     }
-
-    public abstract void onHit( ProjectileWeapon weapon, Char attacker, Char defender, int damage);
 
     @Override
     public void execute( Hero hero, String action ) {
@@ -90,16 +93,21 @@ public abstract class ProjectileWeapon extends Weapon {
         }
     }
 
+    // We split damage in melee and ranged components
+    public abstract int meleeDamageMin();
+    public abstract int meleeDamageMax();
+    public abstract int fireDamageMin();
+    public abstract int fireDamageMax();
+    public abstract int maxDistance();
+
     @Override
     public int min(int lvl) {
-        return  tier +  //base
-                lvl;    //level scaling
+        return  meleeDamageMin();
     }
 
     @Override
     public int max(int lvl) {
-        return  5*(tier+1) +    //base
-                lvl*(tier+1);   //level scaling
+        return  meleeDamageMax();
     }
 
     public int STRReq(int lvl){

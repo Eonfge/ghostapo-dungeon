@@ -24,8 +24,6 @@
 
 package com.ghostapodungeon.items.weapon.projectiles;
 
-import android.util.Log;
-
 import com.ghostapodungeon.Assets;
 import com.ghostapodungeon.actors.Actor;
 import com.ghostapodungeon.actors.Char;
@@ -48,24 +46,30 @@ public class Luger extends ProjectileWeapon {
 
         munitionType = Parabellum.class;
 
+        // Melee stats
         DLY = 1.2f;
         ACC = 1.5f;
     }
 
     @Override
-    public void onHit(ProjectileWeapon weapon, Char attacker, Char defender, int damage){
-        Log.d("MISC", "onHit: execute!");
+    public int meleeDamageMin(){ return 1; };
+    @Override
+    public int meleeDamageMax(){ return 6; };
+    @Override
+    public int fireDamageMin(){ return 2; };
+    @Override
+    public int fireDamageMax(){ return 10; };
 
-        return;
-    }
+    @Override
+    public int maxDistance(){ return 10; };
 
     @Override
     public void onImpact( Ballistica bullet ){
         int cell = bullet.collisionPos;
         Char ch = Actor.findChar( cell );
 
-        if(ch != null){ //TODO: CUSTOM PROJECTILE DMAGE
-            ch.damage( Random.Int( min(), max() ), this);
+        if(ch != null){
+            ch.damage( Random.Int( fireDamageMin(), fireDamageMax() ), this);
         }
 
         for (Item item : curUser.belongings.backpack.items){
